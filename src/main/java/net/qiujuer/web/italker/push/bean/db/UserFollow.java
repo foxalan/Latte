@@ -65,14 +65,14 @@ public class UserFollow {
 
     //我关注的人的列表方法
     //对应的数据库的字段为TB_USER_FOLLOW.originId
-    @JoinColumn(nullable = "originId")
+    @JoinColumn(name = "originId")
     //定义为懒加载，默认加载User信息的时候，并不查询这个集合
     @LazyCollection(LazyCollectionOption.EXTRA)
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<UserFollow> following = new HashSet<>();
 
     //关注我的人
-    @JoinColumn(nullable = "targetId")
+    @JoinColumn(name = "targetId")
     //定义为懒加载，默认加载User信息的时候，并不查询这个集合
     @LazyCollection(LazyCollectionOption.EXTRA)
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
