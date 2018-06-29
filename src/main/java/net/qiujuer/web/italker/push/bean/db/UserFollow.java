@@ -15,7 +15,7 @@ import java.util.Set;
  * 用户关注表
  */
 
-@Table(name = "tb_user")
+@Table(name = "tb_user_follow")
 @Entity
 public class UserFollow {
 
