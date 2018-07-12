@@ -57,7 +57,7 @@ public class AccountService extends BaseService {
     //注册
     @POST
     // 指定请求与返回的相应体为JSON
-    @Consumes(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/register")
     public ResponseModel<AccountRspModel> register(RegisterModel model) {

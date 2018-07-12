@@ -15,9 +15,6 @@ import java.time.LocalDateTime;
 @Table(name = "TB_APPLY")
 public class Apply {
 
-
-
-
     public static final int TYPE_ADD_USER = 1; // 添加好友
     public static final int TYPE_ADD_GROUP = 2; // 加入群
 
