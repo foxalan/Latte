@@ -24,6 +24,8 @@ public class AccountService extends BaseService {
     @Path("/login")
     public ResponseModel<AccountRspModel> login(LoginModel model) {
 
+        System.out.print("开始请求：login");
+
         //检查参数是否为空
         if (!LoginModel.check(model)) {
             return ResponseModel.buildParameterError();
@@ -50,6 +52,9 @@ public class AccountService extends BaseService {
     @GET
     @Path("/test")
     public String test(){
+
+        System.out.print("test get ");
+
         return "test";
     }
 
@@ -98,6 +103,31 @@ public class AccountService extends BaseService {
             return ResponseModel.buildRegisterError();
         }
     }
+
+
+
+    // 绑定设备Id
+    @POST
+    @Path("/bind/{pushId}")
+    // 指定请求与返回的相应体为JSON
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    // 从请求头中获取token字段
+    // pushId从url地址中获取
+    public ResponseModel<AccountRspModel> bind(@HeaderParam("token") String token,
+                                               @PathParam("pushId") String pushId) {
+        if (Strings.isNullOrEmpty(token) ||
+                Strings.isNullOrEmpty(pushId)) {
+            // 返回参数异常
+            return ResponseModel.buildParameterError();
+        }
+
+        // 拿到自己的个人信息
+        // User user = UserFactory.findByToken(token);
+        User self = getSelf();
+        return bind(self, pushId);
+    }
+
 
     /**
      * 绑定的操作
