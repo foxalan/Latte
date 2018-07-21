@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
  */
 
 public class UserCard {
+
     @Expose
     private String id;
     @Expose

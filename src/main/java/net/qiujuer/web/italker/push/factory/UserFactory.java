@@ -15,6 +15,15 @@ import java.util.UUID;
  */
 public class UserFactory {
 
+    // 通过Token字段查询用户信息
+    // 只能自己使用，查询的信息是个人信息，非他人信息
+    public static User findByToken(String token) {
+        return Hib.query(session -> (User) session
+                .createQuery("from User where token=:token")
+                .setParameter("token", token)
+                .uniqueResult());
+    }
+
 
     // 通过Name找到User
     public static User findByName(String name) {
